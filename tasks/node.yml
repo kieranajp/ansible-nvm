@@ -1,14 +1,6 @@
 ---
-- name: Check for current node version
-  shell: ". {{ nvm_path }}/nvm.sh &&  nvm use {{ default_node_version }} > /dev/null 2>&1 && node -v"
-  register: nvm_node_version
-  ignore_errors: yes
-  changed_when: false
-
 - name: Install node
   command: ". {{ nvm_path }}/nvm.sh && nvm install {{ default_node_version }}"
-  when: nvm_node_version.stdout.find(node_version) == -1
 
 - name: Set default node version to installed node
   command: ". {{ nvm_path }}/nvm.sh && nvm alias default {{ node_version }}"
-  when: nvm_node_version.stdout.find(node_version) == -1
