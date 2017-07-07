@@ -12,7 +12,6 @@
   git:
     repo: https://github.com/creationix/nvm.git
     dest: "{{ nvm_path }}"
-    version: "{{ nvm_version }}"
     accept_hostkey: true
   when: not nvm_installed_path.stat.exists
 
