@@ -4,4 +4,4 @@
     name: "{{ item }}"
     global: yes
     executable: "{{ nvm_path }}/{{ nvm_node_version.stdout }}/bin/npm"
-  with_items: nvm_packages
+  with_items: "{{ nvm_packages }}"
